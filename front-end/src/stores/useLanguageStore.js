@@ -163,6 +163,13 @@ const translations = {
     previous: "Previous",
     next: "Next",
     page: "Page",
+    
+    // Form placeholders
+    enterName: "Enter name...",
+    phoneOrEmail: "Phone or email...",
+    supplierName: "Supplier name",
+    supplierAddress: "Supplier address...",
+    creationDate: "Creation Date",
   },
   fr: {
     // Sidebar navigation
@@ -323,6 +330,13 @@ const translations = {
     previous: "Précédent",
     next: "Suivant",
     page: "Page",
+    
+    // Form placeholders
+    enterName: "Entrer le nom...",
+    phoneOrEmail: "Téléphone ou email...",
+    supplierName: "Nom du fournisseur",
+    supplierAddress: "Adresse du fournisseur...",
+    creationDate: "Date création",
   }
 };
 

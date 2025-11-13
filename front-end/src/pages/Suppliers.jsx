@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useLanguageStore } from "../stores/useLanguageStore";
 
 function Suppliers() {
   const [name, setName] = useState("");
@@ -7,6 +8,7 @@ function Suppliers() {
   const [address, setAddress] = useState("");
   const [message, setMessage] = useState("");
   const [suppliers, setSuppliers] = useState([]);
+  const t = useLanguageStore(state => state.t);
 
   useEffect(() => {
     fetchSuppliers();
@@ -21,7 +23,7 @@ function Suppliers() {
         setSuppliers([]);
       }
     } catch (e) {
-      console.error("Erreur récupération fournisseurs :", e);
+      console.error(t('errorFetchingSuppliers'), e);
       setSuppliers([]);
     }
   };
@@ -34,20 +36,20 @@ function Suppliers() {
         contact,
         address,
       });
-      setMessage("✅ Fournisseur créé avec succès");
+      setMessage(t('supplierCreatedSuccess'));
       setName("");
       setContact("");
       setAddress("");
       fetchSuppliers();
     } catch (err) {
-      console.error("Erreur création fournisseur :", err);
-      setMessage("❌ Erreur lors de la création du fournisseur");
+      console.error(t('errorCreatingSupplier'), err);
+      setMessage(t('errorCreatingSupplier'));
     }
   };
 
   return (
     <div className="p-6 bg-white rounded-xl shadow min-h-screen">
-      <h2 className="text-2xl font-bold mb-6">Fournisseurs</h2>
+      <h2 className="text-2xl font-bold mb-6">{t('suppliers')}</h2>
 
       {/* Formulaire */}
       <form
@@ -59,7 +61,7 @@ function Suppliers() {
             className="block mb-2 font-semibold tracking-wide"
             htmlFor="name"
           >
-            Nom du fournisseur
+            {t('supplierName') || t('name')}
           </label>
           <input
             id="name"
@@ -67,7 +69,7 @@ function Suppliers() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full px-4 py-2 border-2 border-rose-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white transition"
-            placeholder="Entrer le nom..."
+            placeholder={t('enterName') || 'Enter name...'}
             required
           />
         </div>
@@ -77,7 +79,7 @@ function Suppliers() {
             className="block mb-2 font-semibold tracking-wide"
             htmlFor="contact"
           >
-            Contact
+            {t('contact')}
           </label>
           <input
             id="contact"
@@ -85,7 +87,7 @@ function Suppliers() {
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             className="w-full px-4 py-2 border-2 border-rose-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white transition"
-            placeholder="Téléphone ou email..."
+            placeholder={t('phoneOrEmail') || 'Phone or email...'}
           />
         </div>
 
@@ -94,7 +96,7 @@ function Suppliers() {
             className="block mb-2 font-semibold tracking-wide"
             htmlFor="address"
           >
-            Adresse
+            {t('address')}
           </label>
           <input
             id="address"
@@ -102,7 +104,7 @@ function Suppliers() {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             className="w-full px-4 py-2 border-2 border-rose-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white transition"
-            placeholder="Adresse du fournisseur..."
+            placeholder={t('supplierAddress') || 'Supplier address...'}
           />
         </div>
 
@@ -110,7 +112,7 @@ function Suppliers() {
           type="submit"
           className="w-full py-2 rounded-lg bg-gradient-to-r from-rose-400 to-rose-600 text-white font-bold shadow hover:from-rose-500 hover:to-rose-700 transition"
         >
-          Enregistrer
+          {t('save')}
         </button>
 
         {message && (
@@ -125,10 +127,10 @@ function Suppliers() {
         <table className="table w-full border border-rose-200">
           <thead className="bg-rose-50">
             <tr>
-              <th className="border border-rose-200">Nom</th>
-              <th className="border border-rose-200">Contact</th>
-              <th className="border border-rose-200">Adresse</th>
-              <th className="border border-rose-200">Date création</th>
+              <th className="border border-rose-200">{t('name')}</th>
+              <th className="border border-rose-200">{t('contact')}</th>
+              <th className="border border-rose-200">{t('address')}</th>
+              <th className="border border-rose-200">{t('creationDate') || 'Creation Date'}</th>
             </tr>
           </thead>
           <tbody>
@@ -148,7 +150,7 @@ function Suppliers() {
             ) : (
               <tr>
                 <td colSpan={4} className="text-center">
-                  Aucun fournisseur
+                  {t('noSupplier')}
                 </td>
               </tr>
             )}
