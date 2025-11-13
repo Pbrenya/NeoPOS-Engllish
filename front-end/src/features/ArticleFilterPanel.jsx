@@ -3,6 +3,7 @@ import { getCurrencySymbol } from '../utils/currency';
 import useArticleFilter from '../hooks/useArticleFilter';
 import Button from '../components/ui/Button';
 import { ShoppingCart } from 'lucide-react';
+import { useLanguageStore } from '../stores/useLanguageStore';
 
 const ArticleFilterPanel = () => {
   const {
@@ -20,6 +21,7 @@ const ArticleFilterPanel = () => {
   } = useArticleFilter();
 
   const currency = getCurrencySymbol();
+  const t = useLanguageStore(state => state.t);
   return (
     <div className="p-6 font-golos scrollbar-hide">
       {/* Filtres */}
