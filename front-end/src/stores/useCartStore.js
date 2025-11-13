@@ -1,6 +1,7 @@
 // cartStore.js
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useLanguageStore } from './useLanguageStore';
 
 export const useCartStore = create(
   persist(
@@ -13,7 +14,8 @@ export const useCartStore = create(
         const availableStock = article.stock || 0;
 
         if (currentQty >= availableStock) {
-          alert("Stock épuisé pour cet article !");
+          const t = useLanguageStore.getState().t;
+          alert(t("stockDepleted"));
           return;
         }
 

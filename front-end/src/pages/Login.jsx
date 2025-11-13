@@ -4,6 +4,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../stores/authStore';
+import { useLanguageStore } from '../stores/useLanguageStore';
 
 
 const Login = ({ onLogin }) => {
@@ -15,6 +16,7 @@ const Login = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
+  const t = useLanguageStore(state => state.t);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,10 +35,10 @@ const Login = ({ onLogin }) => {
         if (onLogin) onLogin();
         navigate('/dashboard', { replace: true });
       } else {
-        setError('Identifiants invalides');
+        setError(t('invalidCredentials'));
       }
     } catch {
-      setError('Identifiants invalides');
+      setError(t('invalidCredentials'));
     } finally {
       setLoading(false);
     }
@@ -54,13 +56,13 @@ const Login = ({ onLogin }) => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-rose-50">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm space-y-6">
-        <h2 className="text-2xl font-bold text-center text-rose-700 mb-4">Connexion</h2>
+        <h2 className="text-2xl font-bold text-center text-rose-700 mb-4">{t('connection')}</h2>
         <div>
-          <label className="block mb-1 text-rose-700 font-semibold">Email</label>
+          <label className="block mb-1 text-rose-700 font-semibold">{t('email')}</label>
           <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full px-4 py-2 border-2 border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300" required />
         </div>
         <div>
-          <label className="block mb-1 text-rose-700 font-semibold">Mot de passe</label>
+          <label className="block mb-1 text-rose-700 font-semibold">{t('password')}</label>
           <div className="relative">
             <input
               type={showPassword ? 'text' : 'password'}
@@ -81,11 +83,11 @@ const Login = ({ onLogin }) => {
         </div>
         <div className="flex items-center gap-2">
           <input id="remember" type="checkbox" checked={remember} onChange={e => setRemember(e.target.checked)} />
-          <label htmlFor="remember" className="text-sm text-gray-700 select-none">Se souvenir de moi</label>
+          <label htmlFor="remember" className="text-sm text-gray-700 select-none">{t('rememberMe')}</label>
         </div>
         {error && <div className="text-center text-red-500 font-semibold animate-pulse">{error}</div>}
         <button type="submit" disabled={loading} className="w-full py-2 rounded-lg bg-gradient-to-r from-rose-400 to-rose-600 text-white font-bold shadow hover:from-rose-500 hover:to-rose-700 transition">
-          {loading ? 'Connexion...' : 'Se connecter'}
+          {loading ? `${t('connection')}...` : t('login')}
         </button>
       </form>
     </div>

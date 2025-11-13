@@ -1,17 +1,20 @@
 import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
+import { useLanguageStore } from '../stores/useLanguageStore';
 
-const navItems = [
-  { to: 'sales', label: 'Rapport de ventes' },
-  { to: 'zone-transfer', label: 'Rapport de transfert de zone' },
-  { to: 'inventory', label: 'Rapport d\'inventaire' },
-  { to: 'crud-log', label: 'Rapport de modifications' },
-];
+const Reports = () => {
+  const t = useLanguageStore(state => state.t);
 
-function Reports() {
+  const navItems = [
+    { to: 'sales', labelKey: 'salesReport' },
+    { to: 'zone-transfer', labelKey: 'zoneTransferReport' },
+    { to: 'inventory', labelKey: 'inventoryReport' },
+    { to: 'crud-log', labelKey: 'modificationReport' },
+  ];
+
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Rapports</h1>
+      <h1 className="text-2xl font-bold mb-4">{t('reports')}</h1>
       <nav className="flex gap-4 mb-6">
         {navItems.map(item => (
           <NavLink
@@ -22,7 +25,7 @@ function Reports() {
             }
             end
           >
-            {item.label}
+            {t(item.labelKey)}
           </NavLink>
         ))}
       </nav>

@@ -8,6 +8,8 @@ import Modal from './ui/Modal';
 import useAuthStore from '../stores/authStore';
 import { X } from 'lucide-react';
 import { useCartStore } from '../stores/useCartStore';
+import { useLanguageStore } from '../stores/useLanguageStore';
+import LanguageToggle from './LanguageToggle';
 
 import { Link } from 'react-router-dom';
 
@@ -20,6 +22,7 @@ const Navbar = () => {
   const user = useAuthStore(state => state.user);
   const cart = useCartStore(state => state.cart);
   const totalCartItems = cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
+  const t = useLanguageStore(state => state.t);
 
   useEffect(() => {
     fetch('/pamoja/api/stock-alerts')
@@ -34,11 +37,12 @@ const Navbar = () => {
       <p className='text-red-600 font-bold text-xl px-4 py-2 bg-red-100 rounded-lg font-golos'>
         <Link to="/stocks">
           {stockAlertCount > 0
-            ? `${stockAlertCount} Article${stockAlertCount > 1 ? 's' : ''} à court de Stocks`
-            : 'Aucun article à court de Stocks'}
+            ? `${stockAlertCount} ${t('article')}${stockAlertCount > 1 ? 's' : ''} ${t('lowStockAlert')}`
+            : t('noLowStock')}
         </Link>
       </p>
       <div className='flex items-center gap-4'>
+        <LanguageToggle />
         <Button className='w-12 h-12 p-2 flex justify-center items-center rounded-full bg-white border hover:bg-gray-100 transition-colors'>
             <Bell className=" text-zinc-500" />
         </Button>
@@ -62,19 +66,19 @@ const Navbar = () => {
         <button
           className="absolute top-3 right-3 text-zinc-400 hover:text-zinc-700 transition-colors"
           onClick={() => setModalOpen(false)}
-          aria-label="Fermer le modal"
+          aria-label={t('closeModal')}
         >
           <X size={24} />
         </button>
         <div className="flex flex-col items-center gap-3 p-2 min-w-[260px]">
-          <span className="text-lg font-bold text-blue-700 mb-1">Utilisateur connecté</span>
+          <span className="text-lg font-bold text-blue-700 mb-1">{t('connectedUser')}</span>
           <div className="flex flex-col items-center gap-1 w-full">
-            <span className="text-base text-gray-900 font-semibold">{user?.name || user?.username || user?.email || 'Non connecté'}</span>
+            <span className="text-base text-gray-900 font-semibold">{user?.name || user?.username || user?.email || t('notConnected')}</span>
             {user?.email && (
               <span className="text-sm text-gray-500">{user.email}</span>
             )}
             {user?.role && (
-              <span className="text-xs mt-1 px-2 py-1 rounded bg-blue-100 text-blue-700 font-medium">Rôle : {user.role}</span>
+              <span className="text-xs mt-1 px-2 py-1 rounded bg-blue-100 text-blue-700 font-medium">{t('role')} : {user.role}</span>
             )}
           </div>
         </div>
