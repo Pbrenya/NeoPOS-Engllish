@@ -78,22 +78,22 @@ const ArticleFilterPanel = () => {
                 <span className="text-lg font-bold text-red-600 mt-2">{currency}{item.sellingPrice}</span>
                 <Button className='flex items-center gap-2 bg-red-100 text-red-600 px-4 py-2 rounded-md hover:bg-red-600 hover:text-white transition-colors duration-200' onClick={() => addToCart(item)}>
                   <ShoppingCart className="w-5 h-5 mr-1" />
-                  Ajouter
+                  {t('add')}
                 </Button>
               </p>
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500 col-span-full mt-10">Aucun article trouvé.</p>
+          <p className="text-center text-gray-500 col-span-full mt-10">{t('noArticleFound')}</p>
         )}
       </div>
 
       {/* Pagination */}
       {filteredItems.length > 8 && (
         <div className=" bottom-0 flex justify-center items-center mt-8 gap-4 py-2">
-          <Button onClick={() => setCurrentPage(p => Math.max(p - 1, 1))} disabled={currentPage === 1} className={`${currentPage > 1 ? "bg-red-600 text-white" : "bg-red-100 text-red-600"} px-4 py-2 rounded-lg`}>Précédent</Button>
-          <span>Page {currentPage} / {totalPages}</span>
-          <Button onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))} disabled={currentPage === totalPages} className={`${currentPage < totalPages ? "bg-red-600 text-white" : "bg-red-100 text-red-600"} px-4 py-2 rounded-lg`}>Suivant</Button>
+          <Button onClick={() => setCurrentPage(p => Math.max(p - 1, 1))} disabled={currentPage === 1} className={`${currentPage > 1 ? "bg-red-600 text-white" : "bg-red-100 text-red-600"} px-4 py-2 rounded-lg`}>{t('previous') || 'Previous'}</Button>
+          <span>{t('page') || 'Page'} {currentPage} / {totalPages}</span>
+          <Button onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))} disabled={currentPage === totalPages} className={`${currentPage < totalPages ? "bg-red-600 text-white" : "bg-red-100 text-red-600"} px-4 py-2 rounded-lg`}>{t('next') || 'Next'}</Button>
         </div>
       )}
     </div>

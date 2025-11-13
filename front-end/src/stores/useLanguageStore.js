@@ -115,6 +115,54 @@ const translations = {
     errorFetchingReport: "Error fetching report",
     noDataForFilters: "No data for selected filters",
     noData: "No data",
+    
+    // Sales Report page
+    date: "Date",
+    ticket: "Ticket",
+    seller: "Seller",
+    category: "Category",
+    quantity: "Qty",
+    purchaseCost: "Purchase Cost",
+    soldPrice: "Sold Price",
+    totalPurchase: "Total Purchase",
+    totalSelling: "Total Sold",
+    margin: "Margin",
+    remainingStock: "Remaining Stock",
+    totals: "Totals",
+    allSellers: "All sellers",
+    allCategories: "All categories",
+    validate: "Validate",
+    exportPDF: "Export PDF",
+    exportExcel: "Export Excel",
+    unexpectedApiResponse: "Unexpected API response",
+    apiError: "API Error",
+    
+    // Suppliers page
+    supplierCreatedSuccess: "✅ Supplier created successfully",
+    errorCreatingSupplier: "❌ Error creating supplier",
+    errorFetchingSuppliers: "Error fetching suppliers",
+    name: "Name",
+    contact: "Contact",
+    address: "Address",
+    
+    // Common labels
+    thankYouForPurchase: "Thank you for your purchase!",
+    unknownSeller: "Unknown seller",
+    payment: "Payment",
+    cash: "Cash",
+    
+    // Inventory
+    doInventory: "Do Inventory",
+    inventoryList: "Inventory List",
+    
+    // Loading & Status
+    loading: "Loading...",
+    errorLoadingStats: "Error loading statistics",
+    
+    // Pagination
+    previous: "Previous",
+    next: "Next",
+    page: "Page",
   },
   fr: {
     // Sidebar navigation
@@ -227,6 +275,54 @@ const translations = {
     errorFetchingReport: "Erreur lors de la récupération du rapport",
     noDataForFilters: "Aucune donnée pour les filtres sélectionnés.",
     noData: "Aucune donnée",
+    
+    // Sales Report page
+    date: "Date",
+    ticket: "Ticket",
+    seller: "Vendeur",
+    category: "Catégorie",
+    quantity: "Qté",
+    purchaseCost: "Coût achat",
+    soldPrice: "Prix vendu",
+    totalPurchase: "Total achat",
+    totalSelling: "Total vendu",
+    margin: "Marge",
+    remainingStock: "Qté stock restant",
+    totals: "Totaux",
+    allSellers: "Tous vendeurs",
+    allCategories: "Toutes catégories",
+    validate: "Valider",
+    exportPDF: "Export PDF",
+    exportExcel: "Export Excel",
+    unexpectedApiResponse: "Réponse inattendue de l'API",
+    apiError: "Erreur API",
+    
+    // Suppliers page
+    supplierCreatedSuccess: "✅ Fournisseur créé avec succès",
+    errorCreatingSupplier: "❌ Erreur lors de la création du fournisseur",
+    errorFetchingSuppliers: "Erreur récupération fournisseurs",
+    name: "Nom",
+    contact: "Contact",
+    address: "Adresse",
+    
+    // Common labels
+    thankYouForPurchase: "Merci pour votre achat !",
+    unknownSeller: "Vendeur inconnu",
+    payment: "Paiement",
+    cash: "Espèces",
+    
+    // Inventory
+    doInventory: "Faire l'inventaire",
+    inventoryList: "Liste des inventaires",
+    
+    // Loading & Status
+    loading: "Chargement...",
+    errorLoadingStats: "Erreur lors du chargement des statistiques",
+    
+    // Pagination
+    previous: "Précédent",
+    next: "Suivant",
+    page: "Page",
   }
 };
 
