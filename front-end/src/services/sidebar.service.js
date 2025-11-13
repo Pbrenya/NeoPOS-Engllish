@@ -3,62 +3,62 @@ import {LayoutDashboard,Airplay,ShoppingCart, ReceiptText,PackageOpen,Boxes,Note
 export const sidebarService = [
     {
         id: 1,
-        name: "Accueil",
+        nameKey: "home",
         icon: LayoutDashboard,
         link:"dashboard"
     },
     {
         id: 2,
-        name: "Caisse",
+        nameKey: "cashier",
         icon: Airplay,
         link:"orders"
     },
     {
         id: 3,
-        name: "Ventes",
+        nameKey: "sales",
         icon: ReceiptText,
         link:"sales"
     },
     
     {
         id: 4,
-        name:"Stocks",
+        nameKey:"stocks",
         icon: PackageOpen,
         link:"stocks"
     },
     {
         id: 5,
-        name: "Inventaire",
+        nameKey: "inventory",
         icon: Boxes,
         link:"inventory"
     },
     {
         id: 6,
-        name: "Statistiques",
+        nameKey: "statistics",
         icon: ChartColumnBig,
         link:"statistics"
     },
     {
         id: 7,
-        name: "Fournisseurs",
+        nameKey: "suppliers",
         icon: Container,
         link:"suppliers"
     },
      {
         id: 8,
-        name: "Rapports",
+        nameKey: "reports",
         icon: NotebookPen,
         link:"reports"
     },
     {
         id: 9,
-        name: "Reglages",
+        nameKey: "settings",
         icon: Settings,
         link:"settings"
     },
     {
         id: 10,
-        name: "Déconnexion",
+        nameKey: "logout",
         icon: LogOut,
         link:"logout"
     }
